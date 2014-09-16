@@ -1,0 +1,53 @@
+.row
+  .col-xs-3
+    h3 Activities
+    form(role='form', novalidate, name='activityForm')
+      .form-group
+        label(for='day') Day
+        select.form-control(name='day', ng-model='day')
+          option(value='Monday') Monday
+          option(value='Tuesday') Tuesday
+          option(value='Wednesday') Wednesday
+          option(value='Thursday') Thursday
+          option(value='Friday') Friday
+          option(value='Saturday') Saturday
+          option(value='Sunday') Sunday
+      .form-group
+        label(for='name') Activity Name
+        input.form-control#name(type='text', name='name', ng-model='activity.name', autofocus, required)
+      .form-group
+        label(for='calories') Calories Burned
+        input.form-control#calories(type='number', name='calories', ng-model='activity.calories')
+      .form-group
+        label(for='details') Activity Details
+        input.form-control#details(type='text', name='details', ng-model='activity.details')
+      .form-group
+        button.btn.btn-primary(ng-show='activityForm.$valid', ng-click='addActivity()') Add
+  .col-xs-9
+    h3 Meals
+    .row
+      .col-xs-4
+        form(role='form', novalidate, name='mealForm')
+          .form-group
+            label(for='day') Day
+            select.form-control(name='day', ng-model='day')
+              option(value='Monday') Monday
+              option(value='Tuesday') Tuesday
+              option(value='Wednesday') Wednesday
+              option(value='Thursday') Thursday
+              option(value='Friday') Friday
+              option(value='Saturday') Saturday
+              option(value='Sunday') Sunday
+          .form-group
+            label(for='name') Meal Name
+            input.form-control(type='text', name='name', ng-model='meal.name', autofocus, required)
+          .form-group
+            label(for='calories') Total Calories
+            input.form-control(type='number', name='calories', ng-model='meal.calories')
+          .form-group
+            label(for='details') Meal Details
+            input.form-control(type='text', name='details', ng-model='meal.details')
+          .form-group
+            button.btn.btn-primary(ng-show='mealForm.$valid', ng-click='addMeal()') Add
+      .col-xs-8
+
