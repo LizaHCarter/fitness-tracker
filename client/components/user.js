@@ -13,7 +13,7 @@
     }
 
     function logout(user){
-      return $http.post('/logout', user);
+      return $http.delete('/logout', user);
     }
 
     return {register:register, login:login, logout:logout};
