@@ -1,4 +1,4 @@
-## name of project
+## Fitness Tracker
 ### Code Badges
 build status icon
 coverage status icon
