@@ -4,7 +4,7 @@
     form(role='form', novalidate, name='activityForm')
       .form-group
         label(for='day') Day
-        select.form-control(name='day', ng-model='day')
+        select.form-control(name='day', ng-model='activity.day')
           option(value='Monday') Monday
           option(value='Tuesday') Tuesday
           option(value='Wednesday') Wednesday
@@ -30,7 +30,7 @@
         form(role='form', novalidate, name='mealForm')
           .form-group
             label(for='day') Day
-            select.form-control(name='day', ng-model='day')
+            select.form-control(name='day', ng-model='meal.day')
               option(value='Monday') Monday
               option(value='Tuesday') Tuesday
               option(value='Wednesday') Wednesday
