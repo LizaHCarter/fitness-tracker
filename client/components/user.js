@@ -1,14 +1,22 @@
 (function(){
   'use strict';
 
-  angular.module('mean-template')
-  .factory('Home', ['$http', function($http){
+  angular.module('fitness-tracker')
+  .factory('User', ['$http', function($http){
 
-    function getMessage(){
-      return $http.get('/home');
+    function register(user){
+      return $http.post('/register', user);
     }
 
-    return {getMessage:getMessage};
+    function login(user){
+      return $http.post('/login', user);
+    }
+
+    function logout(user){
+      return $http.post('/logout', user);
+    }
+
+    return {register:register, login:login, logout:logout};
   }]);
 })();
 

@@ -1,7 +1,7 @@
 (function(){
   'use strict';
 
-  angular.module('mean-template')
+  angular.module('fitness-tracker')
   .factory('Home', ['$http', function($http){
 
     function getMessage(){

@@ -1,12 +1,13 @@
 doctype html
-html(ng-app='mean-template', lang='en')
+html(ng-app='fitness-tracker', lang='en')
   head
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     meta(name='viewport', content='width=device-width, initial-scale=1')
-    title MEAN Template
+    title Fitness Trackr
     link(href='/vendor/bootstrap/dist/css/bootstrap.css', rel='stylesheet')
     link(href='/vendor/fontawesome/css/font-awesome.css', rel='stylesheet')
+    link(href='/vendor/toastr/toastr.css', rel='stylesheet')
     link(href='/index.css', rel='stylesheet')
     link(href='/views/home/home.css', rel='stylesheet')
   body
@@ -21,7 +22,17 @@ html(ng-app='mean-template', lang='en')
     script(src='/vendor/jquery/dist/jquery.js')
     script(src='/vendor/bootstrap/dist/js/bootstrap.js')
     script(src='/vendor/underscore/underscore.js')
+    script(src='/vendor/toastr/toastr.js')
+    script(src='/vendor/localforage/dist/localforage.js')
+    script(src='/vendor/angular-localforage/dist/angular-localForage.js')
+    script(src='/config/toastr.js')
     script(src='/index.js')
+    script(src='/nav.js')
     script(src='/views/home/home.js')
+    script(src='/views/register/register.js')
+    script(src='/views/login/login.js')
+    script(src='/views/logout/logout.js')
     script(src='/components/home.js')
+    script(src='/components/user.js')
+    script(src='/components/http-interceptor.js')
 

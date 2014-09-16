@@ -1,14 +1,26 @@
 (function(){
   'use strict';
 
-  angular.module('mean-template')
-  .factory('Home', ['$http', function($http){
+  angular.module('fitness-tracker')
+  .factory('HttpInterceptor', ['$rootScope', '$location', '$q', function($rootScope, $location, $q){
 
-    function getMessage(){
-      return $http.get('/home');
+    function responseError(res){
+      if(res.status === 401){
+        $location.path('/login');
+      }
+      return $q.reject(res);
     }
 
-    return {getMessage:getMessage};
+    function response(res){
+      var email = res.headers('x-authenticated-user');
+
+      if(email){
+        $rootScope.$broadcast('authenticated', email);
+      }
+
+      return res;
+    }
+
+    return {response:response, responseError:responseError};
   }]);
 })();
-
