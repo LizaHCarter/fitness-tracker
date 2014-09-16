@@ -34,3 +34,9 @@ exports.logout = function(req, res){
     res.status(200).end();
   });
 };
+
+exports.find = function(req, res){
+  User.findById(req.user._id, function(err, user){
+    res.send({user:user});
+  });
+};

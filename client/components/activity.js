@@ -1,14 +1,18 @@
 (function(){
   'use strict';
 
-  angular.module('mean-template')
-  .factory('Home', ['$http', function($http){
+  angular.module('fitness-tracker')
+  .factory('Activity', ['$http', function($http){
 
-    function getMessage(){
-      return $http.get('/home');
+    function create(activity){
+      return $http.post('/activities', activity);
     }
 
-    return {getMessage:getMessage};
+    function all(){
+      return $http.get('/activities');
+    }
+
+    return {create:create, all:all};
   }]);
 })();
 
