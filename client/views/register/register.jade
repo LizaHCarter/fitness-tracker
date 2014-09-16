@@ -1,6 +1,6 @@
 h3 Register
 .row
-  .col-xs-3
+  .col-xs-3.col-xs-offset-4
     form(role='form', novalidate, name='userForm')
       .form-group
         label(for='email') Email
@@ -8,5 +8,19 @@ h3 Register
       .form-group
         label(for='password') Password
         input.form-control#password(type='password', name='password', ng-model='user.password', required, ng-minlength='3')
+      .form-group
+        label(for='cWeight') Current Weight
+        input.form-control#cWeight(type='number', name='cWeight', ng-model='user.cWeight', required)
+      .form-group
+        label(for='gWeight') Goal Weight
+        input.form-control#gWeight(type='number', name='gWeight', ng-model='user.gWeight', required)
+      .form-group
+        label(for='gender') Gender &nbsp;
+        select.form-control(name='gender', ng-model='user.gender', required)
+          option(value='male') Male
+          option(value='female') Female
+      .form-group
+        label(for='height') Height in Inches
+        input.form-control#height(type='number', name='height', ng-model='user.height', required)
       button.btn.btn-primary(ng-show='userForm.$valid', ng-click='register()') Register
-  .col-xs-9
+  .col-xs-5
