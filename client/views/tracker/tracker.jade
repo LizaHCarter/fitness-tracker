@@ -1,14 +1,14 @@
 .row
-  .col-xs-3
+  .col-xs-4
     .panel.panel-default
       .panel-body
         h4 {{user.email}}
         ul
           li Gender: {{user.gender}}
-          li Height (in inches): {{user.height}}
-          li Current Weight: {{user.cWeight}}
-          li Goal Weight: {{user.gWeight}}
-          li Calories to Go: {{calories}}
+          li Height: {{user.height}} in.
+          li Current Weight: {{user.cWeight}} lb.
+          li Goal Weight: {{user.gWeight}} lb.
+        h5 Calories to Go: {{calories}}
   .col-xs-4
     h3 Activities
     form(role='form', novalidate, name='activityForm')
@@ -33,7 +33,6 @@
         input.form-control#details(type='text', name='details', ng-model='activity.details')
       .form-group
         button.btn.btn-primary(ng-show='activityForm.$valid', ng-click='addActivity()') Add
-  .col-xs-1
   .col-xs-4
     h3 Meals
     form(role='form', novalidate, name='mealForm')
@@ -51,7 +50,7 @@
         label(for='name') Meal Name
         input.form-control(type='text', name='name', ng-model='meal.name', autofocus, required)
       .form-group
-        label(for='calories') Total Calories
+        label(for='calories') Calories Consumed
         input.form-control(type='number', name='calories', ng-model='meal.calories')
       .form-group
         label(for='details') Meal Details
@@ -59,34 +58,34 @@
       .form-group
         button.btn.btn-primary(ng-show='mealForm.$valid', ng-click='addMeal()') Add
 
-.row
-  .col-xs-3
-    #days
-      .all(ng-click='findAllA(); findAllM()') All
-      .day(ng-repeat='day in days', ng-click='filterActivities(day);filterMeals(day);') {{day}}
-  .col-xs-4
-    table.table.table-bordered
-      thead
-        tr
-          th Activity
-          th Calories Burned
-          th Details
-      tbody
-        tr(ng-repeat='a in filteredA')
-          td {{a.name}}
-          td {{a.calories}}
-          td {{a.details}}
-  .col-xs-1
-  .col-xs-4
-    table.table.table-bordered
-      thead
-        tr
-          th Meal
-          th Calories Consumed
-          th Details
-      tbody
-        tr(ng-repeat='m in filteredM')
-          td {{m.name}}
-          td {{m.calories}}
-          td {{m.details}}
+.row#results
+  .panel.panel-default
+    .panel-body
+      .col-xs-2
+        #days
+          .day(ng-repeat='day in days', ng-click='filterActivities(day);filterMeals(day);') {{day}}
+      .col-xs-5
+        table.table.table-bordered
+          thead
+            tr
+              th Activity
+              th Calories Burned
+              th Details
+          tbody
+            tr(ng-repeat='a in filteredA')
+              td {{a.name}}
+              td#calBurned {{a.calories}}
+              td {{a.details}}
+      .col-xs-5
+        table.table.table-bordered
+          thead
+            tr
+              th Meal
+              th Calories Consumed
+              th Details
+          tbody
+            tr(ng-repeat='m in filteredM')
+              td {{m.name}}
+              td#calEaten {{m.calories}}
+              td {{m.details}}
 

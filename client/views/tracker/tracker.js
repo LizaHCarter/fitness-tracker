@@ -8,7 +8,7 @@
     $scope.activity = {};
     $scope.activities = [];
     $scope.user = {};
-    $scope.days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+    $scope.days = ['All', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
     $scope.calories = 0;
 
     User.find().then(function(response){
@@ -25,15 +25,23 @@
     });
 
     $scope.filterActivities = function(day){
-      $scope.filteredA = $scope.activities.filter(function(activity){
-        return activity.day === day;
-      });
+      if(day === 'All'){
+        $scope.filteredA = $scope.activities;
+      }else{
+        $scope.filteredA = $scope.activities.filter(function(activity){
+          return activity.day === day;
+        });
+      }
     };
 
     $scope.filterMeals = function(day){
-      $scope.filteredM = $scope.meals.filter(function(meal){
-        return meal.day === day;
-      });
+      if(day === 'All'){
+        $scope.filteredM = $scope.meals;
+      }else{
+        $scope.filteredM = $scope.meals.filter(function(meal){
+          return meal.day === day;
+        });
+      }
     };
 
     $scope.addActivity = function(){
