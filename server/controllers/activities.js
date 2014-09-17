@@ -3,8 +3,8 @@
 var Activity = require('../models/activity');
 
 exports.create = function(req, res){
-  Activity.create(req.body, req.user, function(err, activity){
-    res.send({activity:activity});
+  Activity.create(req.body, req.user, function(err, activity, user){
+    res.send({activity:activity, user:user});
   });
 };
 

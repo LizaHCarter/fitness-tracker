@@ -14,7 +14,15 @@ Object.defineProperty(Activity, 'collection', {
 
 Activity.create = function(o, user, cb){
   var b = new Activity(o, user);
-  Activity.collection.save(b, cb);
+  Activity.collection.save(b, function(err, activity){
+    require('./user').findById(activity.userId, function(err, user){
+      user.cWeight -= (activity.calories/3500);
+      user.calories -= activity.calories;
+      require('./user').collection.update({_id:user._id}, {$set:{calories:user.calories, cWeight:user.cWeight}}, function(){
+        cb(null, activity, user);
+      });
+    });
+  });
 };
 
 Activity.all = function(user, cb){

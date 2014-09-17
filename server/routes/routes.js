@@ -34,6 +34,7 @@ module.exports = function(app, express){
   app.post('/meals', meals.create);
   app.get('/meals', meals.index);
   app.get('/user', users.find);
+  app.post('/newGoal', users.newGoal);
   console.log('Express: Routes Loaded');
 };
 

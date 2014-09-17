@@ -3,8 +3,8 @@
 var Meal = require('../models/meal');
 
 exports.create = function(req, res){
-  Meal.create(req.body, req.user, function(err, meal){
-    res.send({meal:meal});
+  Meal.create(req.body, req.user, function(err, meal, user){
+    res.send({meal:meal, user:user});
   });
 };
 

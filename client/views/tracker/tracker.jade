@@ -5,10 +5,17 @@
         h4 {{user.email}}
         ul
           li Gender: {{user.gender}}
-          li Height (in inches): {{user.height}}
+          li Body Mass Index: {{bmi}}
           li Current Weight: {{user.cWeight}}
           li Goal Weight: {{user.gWeight}}
-          li Calories to Go: {{calories}}
+          li(ng-hide='goal') Calories to Go: {{calories}}
+          li(ng-show='goal')
+            form(role='form', novalidate, name='newForm')
+              .form-group
+                label(for='goal') New Goal Weight!
+                input.form-control#goal(type='number', name='goal', ng-model='user.gWeight', autofocus, required)
+              .form-group
+                button.btn.btn-primary(ng-show='newForm.$valid', ng-click='newGoal()') Go!
   .col-xs-4
     h3 Activities
     form(role='form', novalidate, name='activityForm')
@@ -62,7 +69,6 @@
 .row
   .col-xs-3
     #days
-      .all(ng-click='findAllA(); findAllM()') All
       .day(ng-repeat='day in days', ng-click='filterActivities(day);filterMeals(day);') {{day}}
   .col-xs-4
     table.table.table-bordered

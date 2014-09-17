@@ -20,7 +20,11 @@
       return $http.get('/user');
     }
 
-    return {register:register, login:login, logout:logout, find:find};
+    function newGoal(user){
+      return $http.post('/newGoal', user);
+    }
+
+    return {register:register, login:login, logout:logout, find:find, newGoal:newGoal};
   }]);
 })();
 

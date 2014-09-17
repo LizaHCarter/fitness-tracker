@@ -40,3 +40,9 @@ exports.find = function(req, res){
     res.send({user:user});
   });
 };
+
+exports.newGoal = function(req, res){
+  User.newGoal(req.user._id, req.body, function(err, user){
+    res.send({user:user});
+  });
+};
